@@ -1,0 +1,1 @@
+var _region="tw";window.location.href.match("tw-")||window.location.href.match("tw.")?_region="tw":window.location.href.match("cn-")||window.location.href.match("cn.")?_region="cn":(window.location.href.match("sh-")||window.location.href.match("sh."))&&(_region="sh");var server_type="alpha-",esafe_path="http://test.esafe.com.tw/Service/Etopm.aspx";

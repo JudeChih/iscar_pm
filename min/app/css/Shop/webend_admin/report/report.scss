@@ -1,0 +1,243 @@
+@charset "UTF-8";
+
+//navbar style
+@mixin main-navbar {
+    color: $white;
+    background: -webkit-linear-gradient(-45deg, rgba(55, 55, 55, 1) 30%, rgba(150, 150, 150, 1) 50%, rgba(55, 55, 55, 1) 70%);
+    background: -moz-linear-gradient(-45deg, rgba(55, 55, 55, 1) 30%, rgba(150, 150, 150, 1) 50%, rgba(55, 55, 55, 1) 70%);
+    font-family: Microsoft JhengHei, 'robotolight', sans-serif;
+}
+//navbar::before style
+@mixin main-navbar-before {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url(../../../../image/carbon_bg.jpg);
+    background-size: cover;
+    content: ' ';
+    opacity: 0.7;
+}
+//page background
+@mixin main-page {
+    background-image: url(../../../../image/carbon_bg.jpg);
+    //background-repeat: no-repeat;
+    //background-position: center;
+    //background-attachment: fixed;
+    background-size: cover;
+
+    @media (min-width:992px) {
+        background: #151515;
+    }
+}
+//置中
+@mixin both-center {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+}
+$main-color: #F26531;
+$white: #FCFAF2;
+$subnavbar-bg-color: #202020;
+$brown: #210303;
+
+/* =========================================== */
+
+/*     祈福報表                                */
+
+/* =========================================== */
+
+[data-page="shop-table"] {
+    .navbar {
+        @include main-navbar;
+
+        &::before {
+            @include main-navbar-before;
+        }
+        a.link {
+            color: $white;
+        }
+        &:after {
+            height: 0;
+        }
+        .print {
+            font-size: 1.5em;
+        }
+    }
+    .subnavbar {
+        width: 100%;
+        margin-top: 0;
+        background: $subnavbar-bg-color;
+        padding: 0;
+
+        &::after {
+            background-color: none;
+        }
+        .buttons-row {
+            .button {
+                border-radius: 0;
+                border-left-width: 0;
+                border-right: 1px solid #353535;
+                border: 0;
+                color: #CCC;
+                line-height: 44px;
+                padding: 0;
+                height: 100%;
+                font-size: 1.1em;
+
+                &:first-child {
+                    border-radius: 0;
+                    border-left-width: 0;
+                    border-left-style: none;
+                }
+                &.active {
+                    background: $main-color;
+                    color: white;
+                }
+                &.active-state {
+                    background: rgba(250, 120, 0, 0.3);
+                }
+            }
+        }
+    }
+    .page {
+        @include main-page;
+
+        .tabs {
+            .page-content {
+                .content-block {
+                    .search-block {
+                        margin: 2% 10px;
+                        background: burlywood;
+                        font-size: 1.3em;
+                        padding: 2%;
+                        color: #333;
+                        border-radius: 8px;
+                        text-align: center;
+
+                        input, select {
+                            font-size: 1em;
+                            background: none;
+                            border: 0;
+                            border-bottom: 2px solid #555;
+                            color: darkslategray;
+                            text-align: center;
+                        }
+                        input {
+                            width: 20%;
+                        }
+                        .search {
+                            margin-left: 2%;
+                            width: 10%;
+                            display: inline;
+                            padding: 1% 2%;
+
+                            &:hover {
+                                background: rgba(50, 150, 250, 1);
+                            }
+                            &.active-state {
+                                background: steelblue;
+                            }
+                        }
+                    }
+                    .data-table {
+                        padding: 5%;
+
+                        .card-header {
+                            display: block;
+                            height: 100%;
+                            font-size: 1.6em;
+
+                            .data-table-title {
+                                font-size: 1.4em;
+                                margin-bottom: 5%;
+                                text-align: center;
+
+                                &.name {
+                                    margin-bottom: 0;
+                                }
+                            }
+                            .row {
+                                margin-bottom: 3%;
+
+                                .data-table-totalamount, .data-table-totalcount, .data-table-flowfeeamount, .data-table-platfeeamount, .data-table-revenueamount, .data-table-buyamount {
+                                    color: firebrick;
+                                    font-weight: bold;
+                                }
+                            }
+                            .data-table-date {
+                                margin-bottom: 3%;
+                            }
+                        }
+                        .card-content {
+                            table {
+                                thead {
+                                    font-size: 1.2em;
+                                    background: steelblue;
+                                    color: orange;
+
+                                    .text-left {
+                                        text-align: left;
+                                    }
+                                    th:not(.sortable-active) {
+                                        color: $white;
+                                    }
+                                }
+                            }
+                        }
+                        .card-footer {
+                            display: block;
+                            height: 100%;
+                            font-size: 1.4em;
+
+                            .row {
+                                margin-top: 2%;
+
+                                .col-50:nth-child(2) {
+                                    text-align: right;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .shop-report-tab {
+                tbody {
+                    font-size: 1.2em;
+
+                    .text-left {
+                        text-align: left;
+                    }
+                    tr:nth-child(even) {
+                        background: linen;
+                    }
+                }
+            }
+            .shop-detail-report-tab {
+                tbody {
+                    font-size: 1.2em;
+
+                    .text-left {
+                        text-align: left;
+                    }
+                    tr:nth-child(even) {
+                        background: linen;
+                    }
+                }
+            }
+        }
+    }
+}
+
